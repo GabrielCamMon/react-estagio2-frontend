@@ -19,7 +19,7 @@ export const startAddUserData = (userData = {}) => {
       // createdAt = 0
     } = userData;
     const user = { fullName, email, cpf, birthDate, cellPhone };
-    console.log("pi");
+
     dispatch(addUserData({ id: uid(), ...user }));
   };
 };

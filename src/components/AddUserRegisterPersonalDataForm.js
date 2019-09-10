@@ -1,13 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
 import { UserRegisterPersonalDataForm } from "./UserRegisterPersonalDataForm";
-import { startAddUserData } from "../actions/users";
 
 export class AddUserRegisterPersonalDataForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   onSubmit = user => {
-    this.props.startAddUserData(user);
-    this.props.history.push("/");
+    this.props.handleUser(user);
+    this.props.handleStatus("documentosPessoais");
   };
+
+  // onSubmit = user => {
+  //   this.props.startAddUserData(user);
+  //   this.props.history.push("/");
+  // };
   render() {
     return (
       <div>
@@ -24,11 +30,13 @@ export class AddUserRegisterPersonalDataForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  startAddUserData: user => dispatch(startAddUserData(user))
-});
+export default AddUserRegisterPersonalDataForm;
 
-export default connect(
-  undefined,
-  mapDispatchToProps
-)(AddUserRegisterPersonalDataForm);
+// const mapDispatchToProps = dispatch => ({
+//   startAddUserData: user => dispatch(startAddUserData(user))
+// });
+
+// export default connect(
+//   undefined,
+//   mapDispatchToProps
+// )(AddUserRegisterPersonalDataForm);
