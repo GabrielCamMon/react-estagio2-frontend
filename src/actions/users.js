@@ -6,20 +6,48 @@ export const addUserData = user => ({
 
 export const startAddUserData = (userData = {}) => {
   return dispatch => {
-    const uid = uuid;
     const {
-      fullName = "",
-      email = "",
-      cpf = "",
+      id,
       birthDate = 0,
-      cellPhone = ""
+      cpf = "",
+      cellPhone = "",
+      email = "",
+      facebook = "",
+      fullName = "",
+      linkedin = "",
+      instagram = "",
+      password = ""
       // description = "",
       // note = "",
       // amount = 0,
       // createdAt = 0
     } = userData;
-    const user = { fullName, email, cpf, birthDate, cellPhone };
+    const user = {
+      id,
+      birthDate,
+      cpf,
+      cellPhone,
+      email,
+      facebook,
+      fullName,
+      linkedin,
+      instagram,
+      password
+    };
 
-    dispatch(addUserData({ id: uid(), ...user }));
+    dispatch(addUserData(user));
+  };
+};
+
+export const editUser = (id, updates) => ({
+  type: "EDIT_USER",
+  id,
+  updates
+});
+
+//START_EDIT_EXPENSE
+export const startEditUser = (id, updates) => {
+  return dispatch => {
+    dispatch(editUser(id, updates));
   };
 };
