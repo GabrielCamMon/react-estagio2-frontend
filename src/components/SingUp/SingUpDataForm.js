@@ -41,14 +41,9 @@ class SingUpDataForm extends React.Component {
         }
     };
     render() {
-        return (<form className="form"
-            onSubmit={
-                this.onSubmit
-        }> {
-            this.state.error && <p className="form__error"> {
-                this.state.error
-            }</p>
-        }
+        return (
+        <form className="form"onSubmit={ this.onSubmit }> 
+        { this.state.error && <p className="form__error"> {this.state.error} </p>}
             <input type="email" placeholder="Email *" className="text-input"
                 value={
                     this.state.email
@@ -71,8 +66,8 @@ class SingUpDataForm extends React.Component {
                 onChange={
                     this.onPasswordConfirmChange
                 }/>
-            <fieldset>
-                <legend>Escolha um tipo de Usuário:</legend>
+            <fieldset className="form-group-radio">
+                <legend className="text-legend">Escolha um tipo de Usuário:</legend>
                 <input type="radio" name="tDocument" id="cInventor" value="1"
                     onChange={
                         this.handleInputChange

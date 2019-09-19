@@ -1,5 +1,8 @@
 import uuid from "uuid";
-import api from '../axios/api' export const addUserData = user => ({type: "ADD_USER", user});
+import api from '../axios/api';
+
+
+export const addUserData = user => ({type: "ADD_USER", user});
 
 
 export const startAddUserData = (userData = {}) => {
@@ -17,7 +20,7 @@ export const startAddUserData = (userData = {}) => {
             typeOfProfile
         };
 
-        axios.post('/usuario/criar', user).then(function (response) {
+        api.post('/usuario/criar', user).then(function (response) {
             dispatch(addUserData(user));
             console.log(response);
         }).catch(function (error) {
