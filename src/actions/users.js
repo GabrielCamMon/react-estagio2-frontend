@@ -1,53 +1,37 @@
 import uuid from "uuid";
-export const addUserData = user => ({
-  type: "ADD_USER",
-  user
-});
+import api from '../axios/api' export const addUserData = user => ({type: "ADD_USER", user});
+
 
 export const startAddUserData = (userData = {}) => {
-  return dispatch => {
-    const {
-      id,
-      birthDate = 0,
-      cpf = "",
-      cellPhone = "",
-      email = "",
-      facebook = "",
-      fullName = "",
-      linkedin = "",
-      instagram = "",
-      password = ""
-      // description = "",
-      // note = "",
-      // amount = 0,
-      // createdAt = 0
-    } = userData;
-    const user = {
-      id,
-      birthDate,
-      cpf,
-      cellPhone,
-      email,
-      facebook,
-      fullName,
-      linkedin,
-      instagram,
-      password
-    };
+    return dispatch => {
 
-    dispatch(addUserData(user));
-  };
+        const {
+            email = "",
+            password = "",
+            typeOfProfile = ""
+        } = userData;
+
+        const user = {
+            email,
+            password,
+            typeOfProfile
+        };
+
+        axios.post('/usuario/criar', user).then(function (response) {
+            dispatch(addUserData(user));
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    };
 };
 
-export const editUser = (id, updates) => ({
-  type: "EDIT_USER",
-  id,
-  updates
-});
+export const editUser = (id, updates) => ({type: "EDIT_USER", id, updates});
 
-//START_EDIT_EXPENSE
+// START_EDIT_EXPENSE
 export const startEditUser = (id, updates) => {
-  return dispatch => {
-    dispatch(editUser(id, updates));
-  };
+    return dispatch => {
+        dispatch(editUser(id, updates));
+    };
 };

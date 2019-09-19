@@ -31,23 +31,16 @@ export class AddUserRegisterDocumentData extends React.Component {
         <UserRegisterDocumentTypeData
           onChangeTypeDocument={this.onChangeTypeDocument}
         />
-        <div className="content-container">
-          <UserRegisterRGDocumentDataForm />
-        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, props) => {
-  return {
-    user: state.users.find(user => user.id === props.location.state.user.id)
-  };
+  return {};
 };
 
-const mapDispatchToProps = dispatch => ({
-  startAddUserData: user => dispatch(startAddUserData(user))
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(
   mapStateToProps,
