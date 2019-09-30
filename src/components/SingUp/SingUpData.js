@@ -10,7 +10,7 @@ class SingUpData extends React.Component {
     }
     onSubmit = user => {
         this.props.startAddUserData(user);
-        console.log(user);
+        //console.log(user);
         // this.props.history.push("/createuser/step2", { user });
     };
     render() {

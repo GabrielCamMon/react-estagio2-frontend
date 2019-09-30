@@ -42,49 +42,58 @@ class SingUpDataForm extends React.Component {
     };
     render() {
         return (
-        <form className="form"onSubmit={ this.onSubmit }> 
-        { this.state.error && <p className="form__error"> {this.state.error} </p>}
-            <input type="email" placeholder="Email *" className="text-input"
-                value={
-                    this.state.email
-                }
-                onChange={
-                    this.onEmailChange
-                }/>
-
-            <input type="password" placeholder="Senha *" className="text-input"
-                value={
-                    this.state.password
-                }
-                onChange={
-                    this.onPasswordChange
-                }/>
-            <input type="password" placeholder="Confirmar Senha *" className="text-input"
-                value={
-                    this.state.passwordConfirm
-                }
-                onChange={
-                    this.onPasswordConfirmChange
-                }/>
-            <fieldset className="form-group-radio">
-                <legend className="text-legend">Escolha um tipo de Usuário:</legend>
-                <input type="radio" name="tDocument" id="cInventor" value="1"
+            <form className="form"
+                onSubmit={
+                    this.onSubmit
+            }>
+                {
+                this.state.error && <p className="form__error">
+                    {
+                    this.state.error
+                } </p>
+            }
+                <input type="email" placeholder="Email *" className="text-input"
+                    value={
+                        this.state.email
+                    }
                     onChange={
-                        this.handleInputChange
+                        this.onEmailChange
                     }/>
-                <label htmlFor="cInventor">Sou Inventor</label>
 
-                <br/>
-                <input type="radio" name="tDocument" id="cInvestidor" value="2"
+                <input type="password" placeholder="Senha *" className="text-input"
+                    value={
+                        this.state.password
+                    }
                     onChange={
-                        this.handleInputChange
+                        this.onPasswordChange
                     }/>
-                <label htmlFor="cInvestidor">Sou Investidor</label>
-            </fieldset>
-            <div>
-                <button>Proximo</button>
-            </div>
-        </form>);
+                <input type="password" placeholder="Confirmar Senha *" className="text-input"
+                    value={
+                        this.state.passwordConfirm
+                    }
+                    onChange={
+                        this.onPasswordConfirmChange
+                    }/>
+                <fieldset className="form-group-radio">
+                    <legend className="text-legend">Escolha um tipo de Usuário:</legend>
+                    <input type="radio" name="tDocument" id="cInventor" value="1"
+                        onChange={
+                            this.handleInputChange
+                        }/>
+                    <label htmlFor="cInventor">Sou Inventor</label>
+
+                    <br/>
+                    <input type="radio" name="tDocument" id="cInvestidor" value="2"
+                        onChange={
+                            this.handleInputChange
+                        }/>
+                    <label htmlFor="cInvestidor">Sou Investidor</label>
+                </fieldset>
+                <div>
+                    <button className="button">Cadastrar</button>
+                </div>
+            </form>
+        );
     }
 }
 

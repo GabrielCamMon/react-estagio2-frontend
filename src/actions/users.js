@@ -17,14 +17,14 @@ export const startAddUserData = (userData = {}) => {
         const user = {
             email,
             password,
-            typeOfProfile
+            profile:typeOfProfile
         };
-
+            console.log(user)
         api.post('/usuario/criar', user).then(function (response) {
             dispatch(addUserData(user));
             console.log(response);
         }).catch(function (error) {
-            console.log(error);
+            console.log(error.response.data);
         });
 
     };

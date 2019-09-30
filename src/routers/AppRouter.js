@@ -8,14 +8,13 @@ import SingUp from "../components/SingUp/SingUpData";
 
 export const history = createBrowserHistory();
 
-const AppRouter = () => (<Router history={history}>
-    <div>
-        <Switch>
-            <Route exact path="/"/>
-            <Route exact path="/createuser"
-                component={RegisterUser}/>
-            <Route path="/createuser/step1"
-                component={SingUp}/> {/* <Route
+const AppRouter = () => (
+    <Router history={history}>
+        <div>
+            <Switch>
+                <Route exact path="/"/>
+                <Route path="/users/create"
+                    component={SingUp}/> {/* <Route
           path="/createuser/step2"
           component={AddUserRegisterPersonalData}
         />
@@ -23,7 +22,8 @@ const AppRouter = () => (<Router history={history}>
           path="/createuser/step3"
           component={AddUserRegisterDocumentData}
         /> */} </Switch>
-    </div>
-</Router>);
+        </div>
+    </Router>
+);
 
 export default AppRouter;
