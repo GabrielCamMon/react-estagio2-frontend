@@ -1,30 +1,33 @@
 import uuid from "uuid";
 import api from '../axios/api';
+import {login} from './auth'
 
 
 export const addUserData = user => ({type: "ADD_USER", user});
 
 
-export const startAddUserData = (userData = {}) => {
+export const startCreateUserData = (userData = {}) => {
     return dispatch => {
-
         const {
+            name,
             email = "",
             password = "",
             typeOfProfile = ""
         } = userData;
 
         const user = {
+            fullName:name,
             email,
             password,
             profile:typeOfProfile
         };
-            console.log(user)
-        api.post('/usuario/criar', user).then(function (response) {
-            dispatch(addUserData(user));
-            console.log(response);
+
+        console.log(user)    
+        api.post('/usuario/', user).then(function (response) {
+            dispatch(startSetUser(response.data))
+            dispatch(login(response.data))
         }).catch(function (error) {
-            console.log(error.response.data);
+            console.log(error.response)
         });
 
     };
@@ -36,5 +39,22 @@ export const editUser = (id, updates) => ({type: "EDIT_USER", id, updates});
 export const startEditUser = (id, updates) => {
     return dispatch => {
         dispatch(editUser(id, updates));
+    };
+};
+
+
+
+export const setUser = user => ({
+    type: "SET_USE",
+    user
+  });
+
+export const startSetUser = (auth) => {
+    return dispatch => {
+        api.get(`/usuario/${auth.user_id}/`,{headers:{Authorization:`Token ${auth.token}`}} ).then(function (response) {
+            dispatch(addUserData(response.data));
+        }).catch(function (error) {
+            console.log(error.response)
+        });
     };
 };

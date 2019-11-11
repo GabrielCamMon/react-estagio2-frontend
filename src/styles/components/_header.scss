@@ -1,0 +1,17 @@
+.header-default-custom{
+background-image: url('/assets/img/theme/profile-cover.jpg');
+background-size: cover;
+min-height: 600px;
+background-position: center top;
+}
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.15s ease;
+}
+.header {
+    position: relative;
+}

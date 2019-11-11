@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
+import Header from "../components/Header/Header";
 
-export const PublicRouter = ({
+export const PrivateRoute = ({
   isAuthenticated,
   component: Component,
   ...rest
@@ -10,7 +11,14 @@ export const PublicRouter = ({
   <Route
     {...rest}
     component={props =>
-      isAuthenticated ? <Redirect to="/privatehome" /> : <Component {...props} />
+      isAuthenticated ? (
+        <div>
+          <Header />
+          <Component {...props} />
+        </div>
+      ) : (
+        <Redirect to="/" />
+      )
     }
   />
 );
@@ -18,4 +26,4 @@ export const PublicRouter = ({
 const mapStateToProps = state => ({
   isAuthenticated: !!state.auth.token
 });
-export default connect(mapStateToProps)(PublicRouter);
+export default connect(mapStateToProps)(PrivateRoute);

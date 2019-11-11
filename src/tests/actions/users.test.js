@@ -1,7 +1,7 @@
 import configureMockStore from "redux-mock-store";
 
 import users from "../fixtures/users";
-import { addUserData, startAddUserData } from "../../actions/users";
+import { addUserData, startCreateUserData } from "../../actions/users";
 import thunk from "redux-thunk";
 
 const uid = "thisismytestuid";

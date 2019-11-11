@@ -20,7 +20,16 @@
 border: none;
 }
 .text-legend{
-  font-size: $font-size-large;
+  font-size: $font-size-small;
   font-weight: 700;
   line-height: 1.5;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
