@@ -22,7 +22,6 @@ export const startCreateUserData = (userData = {}) => {
             profile:typeOfProfile
         };
 
-        console.log(user)    
         api.post('/usuario/', user).then(function (response) {
             dispatch(startSetUser(response.data))
             dispatch(login(response.data))
@@ -38,21 +37,22 @@ export const editUser = (id, updates) => ({type: "EDIT_USER", id, updates});
 // START_EDIT_EXPENSE
 export const startEditUser = (id, updates) => {
     return dispatch => {
+
         dispatch(editUser(id, updates));
+        // api.put(`/usuario/${id}/`, updates).then(function (response) {
+        // }).catch(function (error) {
+        //     console.log(error.response)
+        // });
+       
     };
 };
 
-
-
-export const setUser = user => ({
-    type: "SET_USE",
-    user
-  });
+export const setUserData = user => ({type: "SET_USER",user});
 
 export const startSetUser = (auth) => {
     return dispatch => {
         api.get(`/usuario/${auth.user_id}/`,{headers:{Authorization:`Token ${auth.token}`}} ).then(function (response) {
-            dispatch(addUserData(response.data));
+            dispatch(setUserData(response.data));
         }).catch(function (error) {
             console.log(error.response)
         });

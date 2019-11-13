@@ -7,29 +7,29 @@ class EditProfileForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          address: props.user? props.user.address: "",
-          birthDate: props.user ? moment(props.user.birthDate) : moment(),
-          photo: props.user? props.user.photo :"/assets/img/theme/team-4-800x800.jpg",
-          cellPhone: props.user ? props.user.cellPhone : "",
-          calendarFocused: null,
+          address: props.user? props.user.address.street: "",
+          // birthDate: props.user ? moment(props.user.birthDate) : moment(),
+          photo: props.user ? props.user.photo :"/assets/img/theme/team-4-800x800.jpg",
+          cellPhone: props.user.contacts ? props.user.contacts.map(e=>{if(e.type === "Celular"){return e.value}}) : "",
           country:  props.user ? props.user.country:"",
-          cpf: props.cpf ? props.user.cpf :"",
+          cpf: props.user  ? props.user.cpf :"",
+          complement: props.user  ? props.user.address.complement: "", 
           fullName: props.user ? props.user.fullName : "",
-          email: props.email ? props.user.email: "",
-          genre: props.genre? props.user.genre:"",
-          error: "",
-          nacionality: props.nacionality ? props.user.nacionality : "",
-          number: props.user ? props.user.number : "",
-          state: props.user ? props.user.state : "",
-          neighbourhood: props.neighbourhood ? props.user.neighbourhood: "",
-          city: props.city ? props.user.city: "",
-          complement: props.complement ? props.user.complement: "", 
-          zipcode: props.user ? props.user.zipcode : "",
-          street: props.user ? props.user.street : "",          
+          email: props.user  ? props.user.email: "",
+          genre: props.user ? props.user.genre:"",
+          nacionality: props.user ? props.user.nacionality : "",
+          number: props.user ? props.user.address.number : "",
+          state: props.user ? props.user.address.state : "",
+          neighbourhood: props.user  ? props.user.address.neighbourhood: "",
+          city: props.user  ? props.user.address.city: "",
+          zipcode: props.user ? props.user.address.zipcode : "",
+          street: props.user ? props.user.address.street : "",          
           facebook: props.user ? props.user.facebook : "",
           instagram: props.user ? props.user.instagram : "",
           linkedin: props.user ? props.user.linkedin : "",
-          contacts: props.user ? props.user.contacts : []
+          contacts: props.user ? props.user.contacts : [],
+          calendarFocused: null,
+          error: ""
       };
   }
 
@@ -39,7 +39,7 @@ class EditProfileForm extends React.Component {
       this.setState(() => ({calendarFocused: focused}));
   };
 
-  onDateChange = e => {
+  onBirthDayChange = e => {
     const birthDate= e.target.value
           this.setState(() => ({birthDate}));
   };
@@ -149,15 +149,21 @@ onCountryChange= e =>{
   };
 
   onChangeContacts = () => {
-      const contacts = [];
+      const contacts = this.props.user.contacts;
 
-      this.state.facebook && contacts.push({type: "1", value: this.state.facebook});
+      this.state.facebook && contacts.map(e=>{
+        if(e.type === "Facebook"){
+           e.value = this.state.facebook
+        }else{
+          contacts.push({type: "Facebook", value: this.state.facebook});
+        }
+      })  
 
-      this.state.linkedin && contacts.push({type: "2", value: this.state.linkedin});
+      this.state.linkedin && contacts.push({type: "Likedin", value: this.state.linkedin});
 
-      this.state.instagram && contacts.push({type: "3", value: this.state.instagram});
+      this.state.instagram && contacts.push({type: "Instagram", value: this.state.instagram});
 
-      this.state.cellPhone && contacts.push({type: "4", value: this.state.cellPhone});
+      this.state.cellPhone && contacts.push({type: "Celular", value: this.state.cellPhone});
 
       return contacts;
   };
@@ -169,10 +175,21 @@ onCountryChange= e =>{
       } else {
           this.setState(() => ({error: ""}));
           this.props.onSubmit({
-            fullName: this.state.fullName, 
-            birthDate: this.state.birthDate, 
-            contacts: this.onChangeContacts()
-            
+            address: {
+                      street: this.state.address,
+                      zipcode : this.state.zipcode,
+                      number: this.state.number,
+                      neighbourhood : this.state.neighbourhood,
+                      city : this.state.city,
+                      complement: this.state.complement
+                    },
+            fullName: this.state.fullName,
+            photo: this.state.photo,
+            birthDate: this.state.birthDate,
+            genre: this.state.genre, 
+            contacts: this.onChangeContacts(),
+            cpf: this.state.cpf,
+            nacionality: this.state.nacionality
           });
       }
   };
@@ -206,7 +223,7 @@ onCountryChange= e =>{
                 <h3 className="mb-0">Minha Conta</h3>
               </div>
               <div className="col-4 text-right">
-                <a href="#!" className="btn btn-sm btn-primary">Salvar</a>
+                <button className="btn btn-sm btn-primary" onClick={this.onSubmit}>Salvar</button>
               </div>
             </div>
           </div>
@@ -237,7 +254,7 @@ onCountryChange= e =>{
                       <input type="date"
                       style={{border:"none"}}
                         className="input-group-prepend"
-                        onChange={this.onDateChange}
+                        onChange={this.onBirthDayChange}
                         value={this.state.birthDate}
                        />
                       </div>

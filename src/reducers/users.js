@@ -23,18 +23,9 @@ const usersDataReducerDefaultState = {
 export default (state = usersDataReducerDefaultState, action) => {
   switch (action.type) {
     case "ADD_USER":
-      return action.user;
+      return [...state, action.user];
     case "EDIT_USER":
-      return state.map(user => {
-        if (user.user_id === action.user_id) {
-          return {
-            ...user,
-            ...action.updates
-          };
-        } else {
-          return user;
-        }
-      });
+      return {...state,...action.updates};
     case "SET_USER":
       return action.user;
     default:

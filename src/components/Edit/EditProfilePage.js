@@ -2,6 +2,7 @@ import React from 'react';
 import EditProfile from './EditProfileForm';
 import { connect } from "react-redux";
 import {startEditUser,startSetUser} from "../../actions/users"
+import moment from 'moment';
 
 
 class EditProfilePage extends React.Component {
@@ -9,30 +10,40 @@ class EditProfilePage extends React.Component {
         super(props);
         this.state = {  }
     }
-componentWillMount(){
- 
-}
 
     onSubmit=(user)=>{
-
+      this.props.startEditUser(this.props.user.id, user);
+      this.props.history.push("/");
     }
 
     render() { 
         return ( <div>
-            <EditProfile onSubmit={this.onSubmit}/>
+            <EditProfile user={this.props.user} onSubmit={this.onSubmit}/>
         </div> );
     }
 }
  
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
+   let userObject=state.users;
+   Object.keys(userObject).forEach((key,index)=>{
+        if(userObject[key]===null){
+          userObject[key]=""
+        }
+   })
+
+    Object.keys(userObject.address).forEach((key)=>{
+          if(userObject.address[key]===null){
+          userObject.address[key]=""
+          }
+        })
+        userObject.birthDate =  moment()
+
     return {
-      user: state.user,
-      auth: state.auth
+      user: userObject
     };
   };
   
   const mapDispatchToProps = dispatch => ({
-    startSetUser: (auth) =>dispatch(startSetUser(auth)),
     startEditUser: (id, user) => dispatch(startEditUser(id, user))
   });
   

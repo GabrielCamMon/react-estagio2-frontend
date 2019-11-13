@@ -1,11 +1,10 @@
 import React from 'react';
-import EditLink from './EditLink';
+import { Home } from "./Home";
 
-const PrivateHome =()=> {
-        return (  <div>
-            PrivateHome
-            <EditLink/>
-        </div>);
-}
- 
+export const PrivateHome = ()=>(
+    <div>
+      <Home/>
+    </div>
+)
+
 export default PrivateHome;

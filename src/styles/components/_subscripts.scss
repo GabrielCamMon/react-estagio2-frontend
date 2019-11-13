@@ -1,6 +1,11 @@
 .bg-gradient-default {
     background: linear-gradient(87deg, #328cc1 0, #0b3c5d 100%) !important;
 }
+
+.section-shaped .shape-style-1.shape-default {
+    background: linear-gradient(150deg, #7795f8 15%,  #328cc1 70%, #0b3c5d 94%);
+}
+
 .btn-primary {
     border-color: #328cc1 !important;
     background-color: #328cc1 !important;
@@ -12,4 +17,22 @@ a {
 
 a :hover {
     color: #0b3c5d !important;
+}
+.navbar-brand img {
+    height: 65px;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    text-decoration: none;
+    color: #fff;
+    background-color: #0b3c5d !important;
+}
+
+
+
+.nav-link-inner--text{
+    color: rgba(255, 255, 255, .95) !important;
+}
+.btn-primary{
+    color: #fff !important;
 }
