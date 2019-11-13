@@ -1,7 +1,7 @@
 node_modules/
 public/dist/
 public/assets/
-public/asset_copy
+public/asset_copy/
 ./yarn.lock
 .env.test
 .env.development

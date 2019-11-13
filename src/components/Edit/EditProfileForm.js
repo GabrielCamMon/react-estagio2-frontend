@@ -7,11 +7,10 @@ class EditProfileForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          address: props.user? props.user.address.street: "",
           // birthDate: props.user ? moment(props.user.birthDate) : moment(),
           photo: props.user ? props.user.photo :"/assets/img/theme/team-4-800x800.jpg",
-          cellPhone: props.user.contacts ? props.user.contacts.map(e=>{if(e.type === "Celular"){return e.value}}) : "",
-          country:  props.user ? props.user.country:"",
+          cellPhone:  props.user.contacts.find(e=> e.type==="Celular") ?  props.user.contacts.find(e=> e.type==="Celular"): "",
+          country:  props.user.address ? props.user.address.country:"",
           cpf: props.user  ? props.user.cpf :"",
           complement: props.user  ? props.user.address.complement: "", 
           fullName: props.user ? props.user.fullName : "",
@@ -24,10 +23,9 @@ class EditProfileForm extends React.Component {
           city: props.user  ? props.user.address.city: "",
           zipcode: props.user ? props.user.address.zipcode : "",
           street: props.user ? props.user.address.street : "",          
-          facebook: props.user ? props.user.facebook : "",
-          instagram: props.user ? props.user.instagram : "",
-          linkedin: props.user ? props.user.linkedin : "",
-          contacts: props.user ? props.user.contacts : [],
+          facebook: props.user.contacts.find(e=> e.type==="Facebook") ? props.user.contacts.find(e=> e.type==="Facebook") : "",
+          instagram: props.user.contacts.find(e=> e.type==="Instagram")  ? props.user.contacts.find(e=> e.type==="Instagram")  : "",
+          linkedin:props.user.contacts.find(e=> e.type==="Likedin") ? props.user.contacts.find(e=> e.type==="Facebook")  : "",
           calendarFocused: null,
           error: ""
       };

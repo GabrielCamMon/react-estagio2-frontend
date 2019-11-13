@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
+import "./styles/css/argon.min.css"
 
 
 
