@@ -19,7 +19,7 @@ const AppRouter = () => (
         <div>
             <Switch>
                 <PublicRouterHome exact path="/" component={PublicHome}/>
-                <PrivateRoute path="/privatehome" component={PrivateHome}/>
+                <PrivateRoute path="/home" component={PrivateHome}/>
                 <PublicRoute path="/user/singin"
                     component={SingIn}/>
                 <PublicRoute path="/user/create"

@@ -35,14 +35,16 @@ export const startCreateUserData = (userData = {}) => {
 export const editUser = (id, updates) => ({type: "EDIT_USER", id, updates});
 
 // START_EDIT_EXPENSE
-export const startEditUser = (id, updates) => {
+export const startEditUser = (id,updates,auth) => {
+    console.log(id);
+    console.log(updates)
+    console.log(auth)
     return dispatch => {
-
-        dispatch(editUser(id, updates));
-        // api.put(`/usuario/${id}/`, updates).then(function (response) {
-        // }).catch(function (error) {
-        //     console.log(error.response)
-        // });
+        api.put(`/usuario/${id}/`, updates, {headers:{Authorization:`Token ${auth.token}`}}).then(function (response) {
+            dispatch(editUser(id, updates));
+        }).catch(function (error) {
+            console.log(error.response)
+        });
        
     };
 };

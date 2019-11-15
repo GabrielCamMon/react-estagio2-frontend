@@ -7,25 +7,26 @@ class EditProfileForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          // birthDate: props.user ? moment(props.user.birthDate) : moment(),
-          photo: props.user ? props.user.photo :"/assets/img/theme/team-4-800x800.jpg",
-          cellPhone:  props.user.contacts.find(e=> e.type==="Celular") ?  props.user.contacts.find(e=> e.type==="Celular"): "",
+          street: props.user ? props.user.address.street: "",
+          birthDate: props.user ? moment(props.user.birthDate).locale("pt-br") : moment().locale("pt-br"),
+          photo: props.user.photo? props.user.photo :"/assets/img/theme/team-4-800x800.jpg",
+          celular: props.user  ? props.user.celular : "",
           country:  props.user.address ? props.user.address.country:"",
           cpf: props.user  ? props.user.cpf :"",
           complement: props.user  ? props.user.address.complement: "", 
           fullName: props.user ? props.user.fullName : "",
           email: props.user  ? props.user.email: "",
           genre: props.user ? props.user.genre:"",
-          nacionality: props.user ? props.user.nacionality : "",
+          nationality: props.user ? props.user.nationality : "",
           number: props.user ? props.user.address.number : "",
           state: props.user ? props.user.address.state : "",
           neighbourhood: props.user  ? props.user.address.neighbourhood: "",
           city: props.user  ? props.user.address.city: "",
-          zipcode: props.user ? props.user.address.zipcode : "",
+          zipCode: props.user ? props.user.address.zipCode : "",
           street: props.user ? props.user.address.street : "",          
-          facebook: props.user.contacts.find(e=> e.type==="Facebook") ? props.user.contacts.find(e=> e.type==="Facebook") : "",
-          instagram: props.user.contacts.find(e=> e.type==="Instagram")  ? props.user.contacts.find(e=> e.type==="Instagram")  : "",
-          linkedin:props.user.contacts.find(e=> e.type==="Likedin") ? props.user.contacts.find(e=> e.type==="Facebook")  : "",
+          facebook: props.user  ? props.user.facebook :"",
+          instagram: props.user  ? props.user.instagram :"",
+          linkedin:props.user  ? props.user.linkedin:"",
           calendarFocused: null,
           error: ""
       };
@@ -33,15 +34,14 @@ class EditProfileForm extends React.Component {
 
 
 
-  onFocusChange = ({focused}) => {
-      this.setState(() => ({calendarFocused: focused}));
+  onDateChange = birthDate => {
+    if (birthDate) {
+      this.setState(() => ({ birthDate }));
+    }
   };
-
-  onBirthDayChange = e => {
-    const birthDate= e.target.value
-          this.setState(() => ({birthDate}));
+  onFocusChange = ({ focused }) => {
+    this.setState(() => ({ calendarFocused: focused }));
   };
-
 
   onCPFChange = e => {
     const cpfMask = value => {
@@ -55,9 +55,9 @@ class EditProfileForm extends React.Component {
     this.setState({ cpf: cpfMask(e.target.value) });
   };
 
-onCellPhoneChange = e => {
-  const cellPhone= e.target.value;
-  this.setState(() => ({cellPhone}));
+onCelularChange = e => {
+  const celular= e.target.value;
+  this.setState(() => ({celular}));
 };
 
 onPhotoHandler = evt=>{
@@ -78,9 +78,9 @@ if (FileReader && files && files.length) {
  this.setState({photo})
 }
 
-onNacionalityChange = e => {
-  const nacionality= e.target.value;
-  this.setState(() => ({nacionality}));
+onNationalityChange = e => {
+  const nationality= e.target.value;
+  this.setState(() => ({nationality}));
 };
 
 onCityChange = e => {
@@ -94,8 +94,8 @@ onGenreChange = e => {
 };
 
 onAddressChange = e => {
-  const address= e.target.value;
-  this.setState(() => ({address}));
+  const street= e.target.value;
+  this.setState(() => ({street}));
 };
 
 onNumberChange = e => {
@@ -104,8 +104,8 @@ onNumberChange = e => {
 };
 
 onZipCodeChange = e => {
-  const zipcode= e.target.value;
-  this.setState(() => ({zipcode}));
+  const zipCode= e.target.value;
+  this.setState(() => ({zipCode}));
 };
 
 onNeighbourhoodChange = e => {
@@ -141,30 +141,11 @@ onCountryChange= e =>{
       this.setState(() => ({linkedin}));
   };
 
-  onCellPhoneChange = e => {
-      const cellPhone = e.target.value;
-      this.setState(() => ({cellPhone}));
+  oncelularChange = e => {
+      const celular = e.target.value;
+      this.setState(() => ({celular}));
   };
 
-  onChangeContacts = () => {
-      const contacts = this.props.user.contacts;
-
-      this.state.facebook && contacts.map(e=>{
-        if(e.type === "Facebook"){
-           e.value = this.state.facebook
-        }else{
-          contacts.push({type: "Facebook", value: this.state.facebook});
-        }
-      })  
-
-      this.state.linkedin && contacts.push({type: "Likedin", value: this.state.linkedin});
-
-      this.state.instagram && contacts.push({type: "Instagram", value: this.state.instagram});
-
-      this.state.cellPhone && contacts.push({type: "Celular", value: this.state.cellPhone});
-
-      return contacts;
-  };
 
   onSubmit = e => {
       e.preventDefault();
@@ -174,20 +155,26 @@ onCountryChange= e =>{
           this.setState(() => ({error: ""}));
           this.props.onSubmit({
             address: {
-                      street: this.state.address,
-                      zipcode : this.state.zipcode,
-                      number: this.state.number,
-                      neighbourhood : this.state.neighbourhood,
-                      city : this.state.city,
-                      complement: this.state.complement
+                      country : this.state.country? this.state.country:null,
+                      street: this.state.street?this.state.street:null ,
+                      zipCode : this.state.zipCode?this.state.zipCode:null,
+                      number: this.state.number?this.state.number:null,
+                      neighbourhood : this.state.neighbourhood?this.state.neighbourhood:null,
+                      city : this.state.city? this.state.city:null,
+                      complement: this.state.complement? this.state.complement:null,
+                      state: this.state.state? this.state.state:null,
                     },
-            fullName: this.state.fullName,
-            photo: this.state.photo,
-            birthDate: this.state.birthDate,
-            genre: this.state.genre, 
-            contacts: this.onChangeContacts(),
-            cpf: this.state.cpf,
-            nacionality: this.state.nacionality
+            fullName: this.state.fullName? this.state.fullName: null,
+            photo: "/assets/img/theme/team-4-800x800.jpg" ? null:this.state.photo,
+            birthDate: this.state.birthDate.format("YYYY-MM-DD"),
+            genre: this.state.genre? this.state.genre:null, 
+            celular: this.state.celular? this.state.celular:null,
+            facebook: this.state.facebook?this.state.facebook:null,
+            instagram: this.state.instagram?this.state.instagram:null,
+            linkedin: this.state.linkedin?this.state.linkedin:null,
+            cpf: this.state.cpf?this.state.cpf:null,
+            nationality: this.state.nationality?this.state.nationality:null,
+            blocked: false
           });
       }
   };
@@ -196,7 +183,7 @@ onCountryChange= e =>{
             <div className="main-content">
   <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center header-default-custom"  >
     {/* <!-- Mask --> */}
-    <span className="mask bg-gradient-default opacity-8"></span>
+    <span className="mask bg-gradient-custom opacity-8"></span>
     {/* <!-- Header container --> */}
     <div className="container-fluid d-flex align-items-center">
       <div className="row">
@@ -249,11 +236,13 @@ onCountryChange= e =>{
                       <label className="form-control-label" htmlFor="input-birthDate">Digite data de nascimento *</label>
                       
                       <div className="form-control form-control-alternative" >
-                      <input type="date"
-                      style={{border:"none"}}
-                        className="input-group-prepend"
-                        onChange={this.onBirthDayChange}
-                        value={this.state.birthDate}
+                      <SingleDatePicker
+                        date={this.state.birthDate}
+                        onDateChange={this.onDateChange}
+                        focused={this.state.calendarFocused}
+                        onFocusChange={this.onFocusChange}
+                        numberOfMonths={1}
+                        displayFormat="DD/MM/YYYY"
                        />
                       </div>
                     </div>
@@ -303,7 +292,7 @@ onCountryChange= e =>{
                       id="input-address" 
                       className="form-control form-control-alternative" 
                       placeholder="Escreva seu endereço" 
-                      value={this.state.address}
+                      value={this.state.street}
                       type="text"
                       />
                     </div>
@@ -357,7 +346,7 @@ onCountryChange= e =>{
                       className="form-control form-control-alternative" 
                       placeholder="Escreva seu CEP"
                       onChange={this.onZipCodeChange}
-                      value={this.state.zipcode}
+                      value={this.state.zipCode}
                       />
                     </div>
                   </div>
@@ -403,11 +392,11 @@ onCountryChange= e =>{
                     <div className="form-group">
                       <label className="form-control-label" htmlFor="input-address">Telefone</label>
                       <input 
-                      onChange={this.onCellPhoneChange}
+                      onChange={this.onCelularChange}
                       id="input-address" 
                       className="form-control form-control-alternative" 
                       placeholder="Escreva telefone celular" 
-                      value={this.state.cellPhone}
+                      value={this.state.celular}
                       type="tel"
                       />
                     </div>

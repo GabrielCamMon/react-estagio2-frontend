@@ -12,7 +12,8 @@ class EditProfilePage extends React.Component {
     }
 
     onSubmit=(user)=>{
-      this.props.startEditUser(this.props.user.id, user);
+      console.log(this.props.auth)
+      this.props.startEditUser(this.props.user.id,user,this.props.auth)
       this.props.history.push("/");
     }
 
@@ -39,12 +40,14 @@ const mapStateToProps = (state) => {
         userObject.birthDate =  moment()
 
     return {
-      user: userObject
+      user: userObject,
+      auth: state.auth
     };
   };
+ 
   
   const mapDispatchToProps = dispatch => ({
-    startEditUser: (id, user) => dispatch(startEditUser(id, user))
+    startEditUser: (id, user,auth) => dispatch(startEditUser(id, user, auth))
   });
   
   export default connect(

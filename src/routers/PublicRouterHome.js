@@ -11,7 +11,7 @@ export const PublicRouter = ({
   <Route
     {...rest}
     component={props =>
-      isAuthenticated ? <Redirect to="/privatehome" /> : (<div><HeaderNavPublic/> <Component {...props} /></div>)
+      isAuthenticated ? <Redirect to="/home" /> : (<div><HeaderNavPublic/> <Component {...props} /></div>)
     }
   />
 );

@@ -46,7 +46,7 @@ onSubmit = e => {
     return (
       <main>
     <section className="section section-shaped section-lg">
-      <div className="shape shape-style-1 bg-gradient-default">
+      <div className="shape shape-style-1 bg-gradient-custom">
         <span></span>
         <span></span>
         <span></span>

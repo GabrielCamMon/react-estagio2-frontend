@@ -1,3 +1,3 @@
 import axios from "axios";
 
-export default axios.create({baseURL: "http://localhost:8003/api/v1/", responseType: "json"});
+export default axios.create({baseURL: "https://innovation-dreams-backend.herokuapp.com/api/v1/", responseType: "json"});
