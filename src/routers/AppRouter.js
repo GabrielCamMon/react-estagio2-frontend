@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute"
 import PrivateHome from "../components/Home/PrivateHome";
 import NotFoundPage from "../components/NotFoundPage"
 import PublicRouterHome from "./PublicRouterHome";
+import { SobreNos } from "../components/EncherLinguiça/SobreNos";
 
 
 export const history = createBrowserHistory();
@@ -26,7 +27,10 @@ const AppRouter = () => (
                     component={SingUp}/>
                 <PrivateRoute path="/user/edit/profile/:id"
                     component={EditProfilePage}/>
-                    <Route component={NotFoundPage} />
+                   
+                <PublicRoute path="/sobreNos"
+                    component={SobreNos} />
+                     <Route component={NotFoundPage} />
             </Switch>
         </div>
     </Router>
