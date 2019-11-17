@@ -37,7 +37,7 @@ export const PrivateHeader = ({ userName, user_id,logout }) => (
             </a>
             <div className="dropdown-menu">
               <Link to={`/user/edit/profile/${user_id}`}className="dropdown-item">Editar Perfil</Link>
-              <Link to="#" className="dropdown-item">Projetos</Link>
+              <Link to={`/user/edit/projects`} className="dropdown-item">Projetos</Link>
               <Link to="#" className="dropdown-item" onClick={logout}>Logout</Link>
             </div>
           </li>

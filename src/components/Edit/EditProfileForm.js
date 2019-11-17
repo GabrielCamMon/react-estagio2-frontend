@@ -2,6 +2,7 @@ import React from 'react';
 import moment from "moment";
 import CardPhoto from './CardPhoto';
 import {SingleDatePicker} from "react-dates";
+import defaultPhoto from "./defaultphoto"
 
 class EditProfileForm extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class EditProfileForm extends React.Component {
         this.state = {
           street: props.user ? props.user.address.street: "",
           birthDate: props.user ? moment(props.user.birthDate).locale("pt-br") : moment().locale("pt-br"),
-          photo: props.user.photo? props.user.photo :"/assets/img/theme/team-4-800x800.jpg",
+          photo: props.user.photo? props.user.photo :defaultPhoto(),
           celular: props.user  ? props.user.celular : "",
           country:  props.user.address ? props.user.address.country:"",
           cpf: props.user  ? props.user.cpf :"",
@@ -52,7 +53,7 @@ class EditProfileForm extends React.Component {
         .replace(/(\d{3})(\d{1,2})/, "$1-$2")
         .replace(/(-\d{2})\d+?$/, "$1"); // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
     };
-    this.setState({ cpf: cpfMask(e.target.value) });
+    this.setState({ cpf: e.target.value });
   };
 
 onCelularChange = e => {
@@ -61,21 +62,27 @@ onCelularChange = e => {
 };
 
 onPhotoHandler = evt=>{
+  let photo;
   var tgt = evt.target || window.event.srcElement,
   files = tgt.files;
-let photo='';
 // FileReader support
-if (FileReader && files && files.length) {
-  console.log(files[0])
-  var fr = new FileReader();
-  fr.onload = function () {
+  if (FileReader && files && files.length) {
+    console.log(files[0])
+    var fr = new FileReader();
+    fr.onload = ()=>{
       photo = fr.result;
       console.log(photo)
-  }
-  fr.readAsDataURL(files[0]);
-}
+      this.setState({photo})
+    }
+        
+      
+        console.log(photo)
+      
+      fr.readAsDataURL(files[0]);
 
- this.setState({photo})
+    }
+   
+
 }
 
 onNationalityChange = e => {
@@ -165,7 +172,7 @@ onCountryChange= e =>{
                       state: this.state.state? this.state.state:null,
                     },
             fullName: this.state.fullName? this.state.fullName: null,
-            photo: "/assets/img/theme/team-4-800x800.jpg" ? null:this.state.photo,
+            photo: this.state.photo,
             birthDate: this.state.birthDate.format("YYYY-MM-DD"),
             genre: this.state.genre? this.state.genre:null, 
             celular: this.state.celular? this.state.celular:null,
@@ -243,6 +250,7 @@ onCountryChange= e =>{
                         onFocusChange={this.onFocusChange}
                         numberOfMonths={1}
                         displayFormat="DD/MM/YYYY"
+                        isOutsideRange={() => false}
                        />
                       </div>
                     </div>
@@ -273,7 +281,9 @@ onCountryChange= e =>{
                       type="text" 
                       id="input-last-name" 
                       className="form-control form-control-alternative" 
-                      placeholder="Digite seu CPF" 
+                      placeholder="Digite seu CPF"
+                      data-mask="000.000.000-00" 
+                      data-mask-selectonfocus="true"
                       value={this.state.cpf}/>
                     </div>
                   </div>

@@ -19,7 +19,7 @@ a :hover {
     color: #0b3c5d !important;
 }
 .navbar-brand img {
-    height: 65px;
+    height: 65px !important;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -55,4 +55,14 @@ width: 120% !important;
 }
 .DateInput {
     width: 120% !important;
+}
+
+@media (min-width: 1200px){
+    .mr-15-custom{
+        margin-left: 15%;
+    }
+}
+
+.react-datepicker__input-container > input{
+    border:none !important; 
 }
