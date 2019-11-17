@@ -11,6 +11,7 @@ import PrivateHome from "../components/Home/PrivateHome";
 import NotFoundPage from "../components/NotFoundPage"
 import PublicRouterHome from "./PublicRouterHome";
 import PageProjects from "../components/Projects/PageProjects"
+import { SobreNos } from "../components/EncherLinguiça/SobreNos";
 
 
 export const history = createBrowserHistory();
@@ -30,6 +31,10 @@ const AppRouter = () => (
                 <PrivateRoute path="/user/edit/projects"
                 component={PageProjects}/>
                 <Route component={NotFoundPage} />
+                   
+                <PublicRoute path="/sobreNos"
+                    component={SobreNos} />
+                     <Route component={NotFoundPage} />
             </Switch>
         </div>
     </Router>

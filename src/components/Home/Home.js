@@ -23,7 +23,7 @@ export const Home =()=>(
               <h1 className="display-3  text-white">Publique a sua ideia<span>ou invista na ideia que vai dar dinheiro</span></h1>
               <p className="lead  text-white">A Innovation Dreams foi pensada para aquelas pessoas que tem ideias, mas não sabem como começar e para pessoas interessadas em investir em projetos. Ajudamos a tirar a sua ideia do papel!</p>
               <div className="btn-wrapper">
-                <Link to="#" className="btn btn-white btn-icon mb-3 mb-sm-0">
+                <Link to="/sobreNos" className="btn btn-white btn-icon mb-3 mb-sm-0">
                   {/* <span className="btn-inner--icon"><i className="ni ni-cloud-download-95"></i></span> */}
                   <span className="btn-inner--text">Saiba mais</span>
                 </Link>
