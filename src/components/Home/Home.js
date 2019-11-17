@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { Footer } from '../footer/Footer';
 
 export const Home =()=>(
     <div className="position-relative">
@@ -39,6 +40,6 @@ export const Home =()=>(
         </svg>
       </div>
     </section>
-    {/* <!-- 1st Hero Variation --> */}
+    <Footer />
   </div>
 )

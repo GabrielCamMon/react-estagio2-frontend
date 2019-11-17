@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderNavPublic from "../Header/HeaderNavPublic"
+import { Footer } from '../footer/Footer';
 
 export const SobreNos = () => (
     <div>
@@ -93,87 +94,88 @@ export const SobreNos = () => (
                 </div>
             </section>
             <section className="section section-lg">
-      <div className="container">
-        <div className="row justify-content-center text-center mb-lg">
-          <div className="col-lg-8">
-            <h2 className="display-3">Nosso Time</h2>
-            <p className="lead text-muted">
-                Coisas incríveis no mundo dos negócios nunca são feitas por uma única pessoa, e sim por uma equipe
+                <div className="container">
+                    <div className="row justify-content-center text-center mb-lg">
+                        <div className="col-lg-8">
+                            <h2 className="display-3">Nosso Time</h2>
+                            <p className="lead text-muted">
+                                Coisas incríveis no mundo dos negócios nunca são feitas por uma única pessoa, e sim por uma equipe
             </p>
-          </div>
-        </div>
-        <div className="row">
-          
-          <div className="col-md-6 col-lg-4 mb-5 mb-lg-0">
-            <div className="px-4">
-                <img  className="rounded-circle img-center img-fluid shadow shadow-lg--hover" style={{width: '200px'}}  src="/images/gabriel_monteiro.jpg" alt="brand" />
-              <div className="pt-4 text-center">
-                <h5 className="title">
-                  <span className="d-block mb-1">Gabriel Campos Monteiro</span>
-                  <small className="h6 text-muted">Diretor de Estratégia</small>
-                </h5>
-                <div className="mt-3">
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-linkedin"></i>
-                  </a>
+                        </div>
+                    </div>
+                    <div className="row">
+
+                        <div className="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                            <div className="px-4">
+                                <img className="rounded-circle img-center img-fluid shadow shadow-lg--hover" style={{ width: '200px' }} src="/images/gabriel_monteiro.jpg" alt="brand" />
+                                <div className="pt-4 text-center">
+                                    <h5 className="title">
+                                        <span className="d-block mb-1">Gabriel Campos Monteiro</span>
+                                        <small className="h6 text-muted">Diretor de Estratégia</small>
+                                    </h5>
+                                    <div className="mt-3">
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-twitter"></i>
+                                        </a>
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-facebook"></i>
+                                        </a>
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                            <div className="px-4">
+
+                                <img className="rounded-circle img-center img-fluid shadow shadow-lg--hover" style={{ width: '200px' }} src="/images/alexandre_ribeiro.jpg" alt="brand" />
+                                <div className="pt-4 text-center">
+                                    <h5 className="title">
+                                        <span className="d-block mb-1">Alexandre Oliveira Ribeiro</span>
+                                        <small className="h6 text-muted">Diretor Comercial</small>
+                                    </h5>
+                                    <div className="mt-3">
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-twitter"></i>
+                                        </a>
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-facebook"></i>
+                                        </a>
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                            <div className="px-4">
+                                <img className="rounded-circle img-center img-fluid shadow shadow-lg--hover" style={{ width: '200px' }} src="/images/patricia_cunha.jpg" alt="brand" />
+                                <div className="pt-4 text-center">
+                                    <h5 className="title">
+                                        <span className="d-block mb-1">Patricia Cunha de Lima</span>
+                                        <small className="h6 text-muted">Diretora de Marketing</small>
+                                    </h5>
+                                    <div className="mt-3">
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-twitter"></i>
+                                        </a>
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-facebook"></i>
+                                        </a>
+                                        <a  className="btn btn-primary btn-icon-only rounded-circle">
+                                            <i className="fab fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4 mb-5 mb-lg-0">
-            <div className="px-4">
-            
-                <img className="rounded-circle img-center img-fluid shadow shadow-lg--hover" style={{width: '200px'}}  src="/images/alexandre_ribeiro.jpg" alt="brand" />
-              <div className="pt-4 text-center">
-                <h5 className="title">
-                  <span className="d-block mb-1">Alexandre Oliveira Ribeiro</span>
-                  <small className="h6 text-muted">Diretor Comercial</small>
-                </h5>
-                <div className="mt-3">
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-linkedin"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-4 mb-5 mb-lg-0">
-            <div className="px-4">
-                <img className="rounded-circle img-center img-fluid shadow shadow-lg--hover" style={{width: '200px'}}  src="/images/patricia_cunha.jpg" alt="brand" />
-              <div className="pt-4 text-center">
-                <h5 className="title">
-                  <span className="d-block mb-1">Patricia Cunha de Lima</span>
-                  <small className="h6 text-muted">Diretora de Marketing</small>
-                </h5>
-                <div className="mt-3">
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-facebook"></i>
-                  </a>
-                  <a href="#" className="btn btn-primary btn-icon-only rounded-circle">
-                    <i className="fab fa-linkedin"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            </section>
         </main>
+        <Footer />
     </div>
 )
