@@ -12,6 +12,7 @@ import NotFoundPage from "../components/NotFoundPage"
 import PublicRouterHome from "./PublicRouterHome";
 import PageProjects from "../components/Projects/PageProjects"
 import { SobreNos } from "../components/EncherLinguiça/SobreNos";
+import  NormalRoute from "./NormalRoute";
 
 
 export const history = createBrowserHistory();
@@ -29,8 +30,9 @@ const AppRouter = () => (
                 <PrivateRoute path="/user/edit/profile/:id"
                     component={EditProfilePage}/>
                 <PrivateRoute path="/user/edit/projects"
-                component={PageProjects}/>                   
-                <Route path="/sobreNos"
+                component={PageProjects}/>    
+                               
+            <NormalRoute path="/sobreNos"
                     component={SobreNos} />
                      <Route component={NotFoundPage} />
             </Switch>

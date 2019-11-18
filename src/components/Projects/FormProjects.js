@@ -1,12 +1,13 @@
 import React from 'react';
 import {ProjectTitle, Budget, DropZone} from "./CardsForm"
 import DatePicker from "react-datepicker";
+import moment from "moment"
 
 class FormProjects extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-          categorias:props.project ? props.project.description : "",
+          categorias:props.project ? props.project.categories : "TI",
           startDate: new Date(),
           sumary: props.project ? props.project.sumary : "",
           description: props.project ? props.project.description : "",
@@ -16,14 +17,14 @@ class FormProjects extends React.Component {
          }
         }
   
-        onSubmit(){
+        onSubmit=()=>{
           this.props.onSubmit({
             title: this.state.titleProject,
             description:this.state.description,
             summary:this.state.sumary,
-            deadline: this.state.startDate,
+            deadline: moment(this.state.startDate).format("YYYY-MM-DD"),
             budget: this.state.budget,
-            categories: this.state.categorias,
+            categories: [{category:this.state.categorias}],
             images :  this.state.photo
           })
         }
@@ -34,11 +35,7 @@ class FormProjects extends React.Component {
     onHandle = (prop, val) => {
       this.setState({ [prop]: val })
     };
-    handleChange = date => {
-      this.setState({
-        startDate: date
-      });
-    };
+   
     onPhotoHandler = evt=>{
       console.log("oi")
       const arrayPhoto=this.state.photo;
@@ -52,7 +49,7 @@ class FormProjects extends React.Component {
         fr.onload = ()=>{
           photo = fr.result;
           console.log(photo)
-          arrayPhoto.push({"image": {photo}})
+          arrayPhoto.push({"image": photo})
           this.setState({photo:arrayPhoto})
         }
             console.log(photo)
@@ -70,8 +67,8 @@ class FormProjects extends React.Component {
     <div className="container-fluid d-flex align-items-center">
       <div className="row">
         <div className="col-lg-7 col-md-10">
-          <h1 className="display-2 text-white">Olá, {this.state.fullName}</h1>
-          <p className="text-white mt-0 mb-5">Esta é a página de edição. Complete todo o cadastro para acessar as funcionalidades da plataforma.</p>
+          <h1 className="display-2 text-white"></h1>
+          <p className="text-white mt-0 mb-5">Esta é a página de criação de projeto. Complete todo o cadastro para publicar seu projeto!</p>
         </div>
       </div>
     </div>
@@ -134,11 +131,11 @@ class FormProjects extends React.Component {
                   <div className="col-lg-6">
                     <div className="form-group">
                       <label className="form-control-label" htmlFor="input-last-name">Categoria </label>
-                      <select class="form-control" value={this.state.categorias} onChange={this.handleChange}>
-                          <option value="construcao">Construção</option>
-                          <option value="tecnologia">Tecnologia</option>
-                          <option value="saude">Saúde</option>
-                          <option value="agronomia">Agronomia</option>
+                      <select className="form-control" name="categorias" value={this.state.categorias} onChange={this.onHandleChange}>
+                          <option value="TI">TI</option>
+                          <option value="Música">Música</option>
+                          <option value="Arte">Arte</option>
+                          <option value="Jogo">Jogo</option>
                         </select>
  
                     </div>

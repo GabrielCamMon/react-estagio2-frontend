@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import usersReduce from "../reducers/users";
 import authReduce from "../reducers/auth";
 import projectReduce from "../reducers/projects"
+import categoriesReduce from "../reducers/categories"
 import {persistStore, persistCombineReducers} from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 
@@ -18,7 +19,9 @@ export default () => {
     persistCombineReducers(config,{
       users: usersReduce,
       auth: authReduce,
-      projects: projectReduce
+      projects: projectReduce,
+      categories: categoriesReduce
+      
     }),
     composeEnhancers(applyMiddleware(thunk))
     //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

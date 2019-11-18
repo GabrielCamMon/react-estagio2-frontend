@@ -15,7 +15,7 @@ class PageProjects extends React.Component {
     render() { 
         return ( 
                <div>
-                   <FormProjects/>
+                   <FormProjects onSubmit={this.onSubmit}/>
                </div>
          );
     }

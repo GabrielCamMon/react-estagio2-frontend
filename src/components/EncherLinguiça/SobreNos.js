@@ -3,7 +3,7 @@ import HeaderNavPublic from "../Header/HeaderNavPublic"
 
 export const SobreNos = () => (
     <div>
-        <HeaderNavPublic />
+     
         <main>
             <div className="position-relative">
 
@@ -33,7 +33,7 @@ export const SobreNos = () => (
 
                         </div>
                         <div className='col-md-5'>
-                            <img className="img-sobre-nos" src="/images/logo_white.png" alt="brand" />
+                        
                         </div>
                     </div>
                     <div className="separator separator-bottom separator-skew">

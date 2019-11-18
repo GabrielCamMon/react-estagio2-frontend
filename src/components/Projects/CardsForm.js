@@ -2,45 +2,17 @@ import React from 'react';
 
 
 export const DropZone = props=>(
-    <div class="card">
+    <div className="card">
     {/* <!-- Card header --> */}
-    <div class="card-header">
-      <h3 class="mb-0">Dropzone</h3>
+    <div className="card-header">
+      <h3 className="mb-0">Dropzone</h3>
     </div>
     {/* <!-- Card body --> */}
-    <div class="card-body">
-      {/* <!-- Multiple --> */}
-      <div class="dropzone dropzone-multiple" data-toggle="dropzone" data-dropzone-multiple data-dropzone-url="http://">
-        <div class="fallback">
-          <div class="custom-file">
-            <input type="file" onChange={props.onPhotoHandler} class="custom-file-input" name="file" id="customFileUploadMultiple"  readOnly/>
-            <label class="custom-file-label" htmlFor="file">Choose file</label> 
-          </div>
-        </div>
-        <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
-          <li class="list-group-item px-0">
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <div class="avatar">
-                  <img class="avatar-img rounded" src="...html" alt="..." data-dz-thumbnail/>
-                </div>
-              </div>
-              <div class="col ml--3">
-                <h4 class="mb-1" data-dz-name>...</h4>
-                <p class="small text-muted mb-0" data-dz-size>...</p>
-              </div>
-              <div class="col-auto">
-                <div class="dropdown">
-                  <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fe fe-more-vertical"></i>
-                  </a>
-              
-                </div>
-              </div>
+    <div className="card-body">
+    <div className="d-flex justify-content-between">
+               <label htmlFor="file" className="btn btn-sm btn-info mr-4"> <i className="fas fa-edit"></i> Escolha suas fotos</label>
+              <input id="file" type="file" onChange={props.onPhotoHandler} className="inputfile" name="file" readOnly/>
             </div>
-          </li>
-        </ul>
-      </div>
     </div>
     </div>
            
