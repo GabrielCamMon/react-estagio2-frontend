@@ -1,9 +1,17 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {startGetProjects} from "../../actions/projects";
+
+
 
 class ExploreProjects extends React.Component {
     constructor(props) {
         super(props);
         this.state = {  }
+    }
+
+    componentWillMount=()=>{
+        this.props.startGetProjects()
     }
     render() { 
         return ( 
@@ -66,5 +74,20 @@ class ExploreProjects extends React.Component {
          );
     }
 }
+const mapStateToProps = (state) => {
+
+   return {
+     projects: state.projects
+   };
+ };
+
  
-export default ExploreProjects;
+ const mapDispatchToProps = dispatch => ({
+   startGetProjects: () => dispatch(startGetProjects()) 
+ });
+ 
+ export default connect(
+   mapStateToProps,
+   mapDispatchToProps
+ )(ExploreProjects);
+

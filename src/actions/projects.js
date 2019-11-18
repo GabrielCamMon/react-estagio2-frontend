@@ -26,3 +26,15 @@ export const startAddProject = (projectData = {},auth) => {
     });
   };
 };
+
+export const startGetProjects = (projectData = {},auth) => {
+  return (dispatch, getState) => {
+    api.get("/project/").then(function (response) {
+      console.log(response.data)
+        dispatch(setProject(response.data))
+    }).catch(function (error) {
+        console.log(error.response)
+    });
+  };
+};
+
