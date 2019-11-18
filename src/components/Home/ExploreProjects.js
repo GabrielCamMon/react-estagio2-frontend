@@ -1,17 +1,32 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {startGetProjects} from "../../actions/projects";
+import {Link} from "react-router-dom"
+import api from "../../axios/api"
 
 
 
 class ExploreProjects extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {project:[]  }
+    }
+
+    onHandleProject=(project)=>{
+        console.log(project)
+        this.setState({project})
     }
 
     componentWillMount=()=>{
+        api.get("/project/").then( (response)=> {
+            console.log(response.data)
+              this.onHandleProject(response.data)
+          })
         this.props.startGetProjects()
+    }
+    componentDidMount=()=>{
+        this.props.startGetProjects()
+
     }
     render() { 
         return ( 
@@ -28,14 +43,26 @@ class ExploreProjects extends React.Component {
                         <div className="col-lg-12">
                             <div className="row row-grid">
                                 <div className="col-lg-4">
+                                    {/* <Link to={`/viewproject/${this.state.project[1].id}`}> */}
                                     <div className="card card-lift--hover shadow border-0">
                                         <div className="card-body py-5">
-                                            <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                                                <i className="fas fa-bullseye"></i>
-                                            </div>
-                                            <h6 className="text-primary text-uppercase">MISSÃO</h6>
+                                            {console.log(this.state.project[1])}
+                                          {/* <img src={}/> */}
+                                            <h6 className="text-primary text-uppercase">PROJECT1</h6>
                                             <p className="description mt-3">
-                                                Trazer projetos criativos, inovadores e de qualidade ao mundo.
+                                               LorinnLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius felis nec nisl bibendum venenatis. Nulla arcu arcu, mollis a sem ut, auctor bibendum risus. Quis
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {/* </Link> */}
+                                </div>
+                                <div className="col-lg-4">
+                                    <div className="card card-lift--hover shadow border-0">
+                                        <div className="card-body py-5">
+                                          
+                                            <h6 className="text-success text-uppercase">PROJECT2</h6>
+                                            <p className="description mt-3">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius felis nec nisl bibendum venenatis. Nulla arcu arcu, mollis a sem ut, auctor bibendum risus. Quis
                                             </p>
                                         </div>
                                     </div>
@@ -43,25 +70,10 @@ class ExploreProjects extends React.Component {
                                 <div className="col-lg-4">
                                     <div className="card card-lift--hover shadow border-0">
                                         <div className="card-body py-5">
-                                            <div className="icon icon-shape icon-shape-success rounded-circle mb-4">
-                                                <i className="fas fa-eye"></i>
-                                            </div>
-                                            <h6 className="text-success text-uppercase">VISÃO</h6>
+                                         
+                                            <h6 className="text-warning text-uppercase">PROJECT3</h6>
                                             <p className="description mt-3">
-                                                Nosso objetivo é ser referência como empresa produtora de ideias e inovações.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="card card-lift--hover shadow border-0">
-                                        <div className="card-body py-5">
-                                            <div className="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                                                <i className="fas fa-check"></i>
-                                            </div>
-                                            <h6 className="text-warning text-uppercase">VALOR</h6>
-                                            <p className="description mt-3">
-                                                Nossos valores é valorizar e respeitar às pessoas e responsabilidade social.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius felis nec nisl bibendum venenatis. Nulla arcu arcu, mollis a sem ut, auctor bibendum risus. Quis
                                             </p>
                                         </div>
                                     </div>

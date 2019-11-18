@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
 
 class ProjectsViewPage extends Component {
     constructor(props) {
@@ -11,5 +12,17 @@ class ProjectsViewPage extends Component {
           );
     }
 }
- 
-export default ProjectsViewPage;
+
+const mapStateToProps = (state) => ({
+    projects: state.projects
+})
+  
+   
+   const mapDispatchToProps = dispatch => ({
+    startGetProject: () => dispatch(startGetProject())
+   });
+   
+   export default connect(
+     mapStateToProps,
+     mapDispatchToProps
+   )(ProjectsViewPage);
